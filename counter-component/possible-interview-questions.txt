@@ -1,0 +1,77 @@
+Counter Component - Interview Notes
+======================================
+
+A simple yet essential React challenge used in many front-end interviews.
+This component demonstrates:
+- useState
+- Event handling
+- Functional updates
+- Component rendering basics
+
+--------------------------------------
+Features:
+--------------------------------------
+- Increment, decrement, and reset buttons
+- Functional state updates to avoid stale values
+- Clean UI with semantic buttons
+
+--------------------------------------
+ Key Interview Questions & Answers:
+--------------------------------------
+
+1. What is React and why use it?
+> React is a JavaScript library for building user interfaces. It allows you to build reusable UI components, manage state, and update the UI efficiently using a virtual DOM.
+
+2. Why use React over Vanilla JS or jQuery?
+> - Reusable components
+> - Faster updates with Virtual DOM
+> - One-way data flow
+> - Built-in state management with hooks
+> - Easier to scale apps
+
+3. What’s the difference between React and Next.js?
+> React is a UI library. Next.js is a framework built on top of React.
+> React: Client-side rendering only, routing handled manually.
+> Next.js: Offers server-side rendering (SSR), static site generation (SSG), routing, API routes, and more out of the box.
+
+4. How does `useState` work?
+> `useState` is a React hook that lets you manage component state in a functional component.
+> Example: `const [count, setCount] = useState(0);`
+
+5. Why use functional updates like `setCount(prev => prev + 1)`?
+> Functional updates are useful when the new state depends on the old state. This ensures accurate updates, especially in async scenarios.
+
+6. How do you prevent the count from going below 0?
+> Use a guard condition:
+> `setCount(prev => (prev > 0 ? prev - 1 : 0));`
+
+7. How can you persist count using localStorage?
+> Use `useEffect` to sync state with localStorage:
+> ```
+> useEffect(() => {
+>   const stored = localStorage.getItem('count');
+>   if (stored) setCount(Number(stored));
+> }, []);
+>
+> useEffect(() => {
+>   localStorage.setItem('count', String(count));
+> }, [count]);
+> ```
+
+8. How would you write tests for this component?
+> Using React Testing Library:
+> - Test initial state (e.g., 0)
+> - Simulate click events
+> - Assert the count updates correctly
+> - Test boundary logic (e.g., not going below 0)
+
+--------------------------------------
+Bonus Questions:
+--------------------------------------
+- How would you animate the count update?
+- How can you disable the decrement button when count = 0?
+- What if count needs to be shared across multiple components?
+
+--------------------------------------
+📁 Tip:
+Keep this challenge as a base template to build more complex stateful UI components in React.
